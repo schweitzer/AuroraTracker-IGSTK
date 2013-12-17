@@ -6,13 +6,11 @@
 SET(IGSTK_HEADS
     igstkAuroraTracker.h                    
     igstkCoordinateSystemSetTransformResult.h      
-    igstkNDICommandInterpreterClassic.h  
-    igstkSerialCommunicationForPosix.h    
+    igstkNDICommandInterpreterClassic.h   
     igstkTimeStamp.h
     igstkAuroraTrackerTool.h                
     igstkCoordinateSystemTransformToErrorResult.h  
     igstkNDICommandInterpreter.h         
-    igstkSerialCommunicationForWindows.h  
     igstkTracker.h
     igstkBinaryData.h                       
     igstkCoordinateSystemTransformToResult.h       
@@ -47,13 +45,11 @@ SET(IGSTK_HEADS
 SET(IGSTK_SRCS
     igstkAuroraTracker.cxx              
     igstkCoordinateSystemSetTransformResult.cxx      
-    igstkNDICommandInterpreter.cxx  
-    igstkSerialCommunicationForPosix.cxx    
+    igstkNDICommandInterpreter.cxx   
     igstkTransformBase.cxx
     igstkAuroraTrackerTool.cxx          
     igstkCoordinateSystemTransformToErrorResult.cxx  
     igstkNDITracker.cxx             
-    igstkSerialCommunicationForWindows.cxx  
     igstkTransform.cxx
     igstkBinaryData.cxx                 
     igstkCoordinateSystemTransformToResult.cxx       
@@ -75,7 +71,21 @@ SET(IGSTK_SRCS
 )
 
 
-
+IF( WIN32 )
+  SET(IGSTK_HEADS ${IGSTK_HEADS} 
+    igstkSerialCommunicationForWindows.h
+  )
+  SET(IGSTK_SRCS ${IGSTK_SRCS} 
+    igstkSerialCommunicationForWindows.cxx
+  )
+ELSE( WIN32 )
+  SET(IGSTK_HEADS ${IGSTK_HEADS} 
+    igstkSerialCommunicationForPosix.h
+  )
+  SET(IGSTK_SRCS ${IGSTK_SRCS} 
+    igstkSerialCommunicationForPosix.cxx
+  )
+ENDIF( WIN32 )
 
 # Adding the IGSTK library
 
