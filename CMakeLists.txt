@@ -3,7 +3,7 @@ IF(COMMAND CMAKE_POLICY)
   CMAKE_POLICY(SET CMP0003 NEW)
 ENDIF(COMMAND CMAKE_POLICY)
 
-PROJECT( IGSTK-AURORATRACKER )
+PROJECT( IGSTK )
 
 # version
 SET(IGSTK_VERSION_MAJOR "0")
@@ -192,17 +192,6 @@ IF(MSVC_VERSION EQUAL 1400 OR MSVC_VERSION GREATER 1400)
 ENDIF(MSVC_VERSION EQUAL 1400 OR MSVC_VERSION GREATER 1400)
 
 SUBDIRS(Utilities)
-
-OPTION(BUILD_DOCUMENTATION "Build IGSTK Documentation" OFF)
-IF(BUILD_DOCUMENTATION)
-  find_package(VTK)
-  IF (USE_VTK_FILE)
-    INCLUDE (${USE_VTK_FILE})
-  ELSE (USE_VTK_FILE)
-    MESSAGE( FATAL_ERROR "This application requires VTK. One of these components is missing. Please verify configuration")
-  ENDIF (USE_VTK_FILE)
-  SUBDIRS(Utilities/Doxygen)
-ENDIF(BUILD_DOCUMENTATION)
 
 #-----------------------------------------------------------------------------
 # IGSTK uses KWStyle for checking the coding style
