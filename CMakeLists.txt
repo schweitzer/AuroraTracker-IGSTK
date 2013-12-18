@@ -28,10 +28,6 @@ ENDIF(IGSTK_WITH_LIBRARY_VERSION)
 # Build with shared libraries
 OPTION(BUILD_SHARED_LIBS "Build with shared libraries" OFF)
 
-ENABLE_TESTING()
-INCLUDE (${CMAKE_ROOT}/Modules/Dart.cmake)
-
-SET(CXX_TEST_PATH ${EXECUTABLE_OUTPUT_PATH})
 
 #
 #  FIND ITK
