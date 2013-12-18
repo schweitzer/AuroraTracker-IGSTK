@@ -92,12 +92,26 @@ ENDIF( WIN32 )
 ADD_LIBRARY(IGSTK ${IGSTK_HEADS} ${IGSTK_SRCS})
 
 # Linking with the FLTK, ITK and VTK libraries
-TARGET_LINK_LIBRARIES( IGSTK
-    ITKCommon
-    vtkRendering vtkGraphics vtkHybrid vtkImaging 
-    vtkIO vtkFiltering vtkCommon vtksys
-    ${EXTRA_LIBS}
-)
+IF(${VTK_VERSION} VERSION_LESS 6.0.0)
+    TARGET_LINK_LIBRARIES( IGSTK
+        ITKCommon
+        vtkRendering    
+        vtkFiltering 
+        vtkCommon
+        vtkFilters
+        vtkGraphics
+        ${EXTRA_LIBS}
+    )
+
+ELSE(${VTK_VERSION} VERSION_LESS 6.0.0)
+    TARGET_LINK_LIBRARIES( IGSTK
+        ITKCommon
+        ${VTK_LIBRARIES} 
+        ${EXTRA_LIBS}
+    )
+
+ENDIF(${VTK_VERSION} VERSION_LESS 6.0.0)
+
 
 # Apply user-defined properties to the library target.
 IF(IGSTK_LIBRARY_PROPERTIES)
@@ -106,9 +120,6 @@ IF(IGSTK_LIBRARY_PROPERTIES)
   )
 ENDIF(IGSTK_LIBRARY_PROPERTIES)
 
-IF(IGSTK_USE_FLTK)
-  TARGET_LINK_LIBRARIES( IGSTK ${FLTK_LIBRARIES} )
-ENDIF(IGSTK_USE_FLTK)
 
 INSTALL(TARGETS IGSTK
    DESTINATION ${IGSTK_INSTALL_LIB_DIR}
