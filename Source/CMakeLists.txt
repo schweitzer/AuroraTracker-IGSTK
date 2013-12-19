@@ -106,7 +106,10 @@ IF(${VTK_VERSION} VERSION_LESS 6.0.0)
 ELSE(${VTK_VERSION} VERSION_LESS 6.0.0)
     TARGET_LINK_LIBRARIES( IGSTK
         ITKCommon
-        ${VTK_LIBRARIES} 
+        vtkRenderingCore
+        vtkCommonCore
+        vtkFiltersGeneral
+        #${VTK_LIBRARIES} 
         ${EXTRA_LIBS}
     )
 
