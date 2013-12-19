@@ -35,6 +35,7 @@ SET(IGSTK_HEADS
     igstkNDIClassicTracker.h                       
     igstkRealTimeClock.h                 
     igstkStateMachineState.h
+    igstkToken.h
 
 )
 
@@ -67,6 +68,7 @@ SET(IGSTK_SRCS
     igstkNDICommandInterpreterClassic.cxx           
     igstkSerialCommunication.cxx   
     igstkTrackerTool.cxx
+    igstkToken.cxx
 
 )
 
