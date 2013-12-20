@@ -36,6 +36,7 @@ SET(IGSTK_HEADS
     igstkRealTimeClock.h                 
     igstkStateMachineState.h
     igstkToken.h
+    igstkTransformObserver.h
 
 )
 
