@@ -112,6 +112,10 @@ ELSE(${VTK_VERSION} VERSION_LESS 6.0.0)
         vtkRenderingCore
         vtkCommonCore
         vtkFiltersGeneral
+        vtkInteractionStyle
+        vtkRenderingFreeType
+        vtkRenderingFreeTypeOpenGL
+        vtkRenderingOpenGL
         #${VTK_LIBRARIES} 
         ${EXTRA_LIBS}
     )
